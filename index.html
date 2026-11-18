@@ -28,7 +28,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
 <link rel="stylesheet" href="css/fuentes.css?v=1">
 <link rel="stylesheet" href="kit/kit.css?v=1">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="css/almacen.css?v=3">
+<link rel="stylesheet" href="css/almacen.css?v=5">
 </head>
 <body>
 
@@ -77,7 +77,6 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
         <span class="escrito">tocá una pieza</span>
         <span class="medalla__mini">y te contamos qué es</span>
       </div>
-      <p class="medalla__vacia" aria-hidden="true">Tocá una pieza del mosaico y acá te contamos qué plato es y si hoy sale.</p>
       <div class="ficha" id="ficha" role="dialog" aria-modal="false" aria-labelledby="ficha-n" hidden>
         <button class="ficha__x" type="button" aria-label="Cerrar">×</button>
         <div class="ficha__foto"><img id="ficha-img" alt="" width="640" height="640"></div>
@@ -183,7 +182,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
   <p class="credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
 </footer>
 
-<script type="module" src="js/almacen.js?v=3"></script>
+<script type="module" src="js/almacen.js?v=5"></script>
 <script type="module">
   import { initKit } from './kit/kit.js?v=1';
   window.kit = await initKit({

@@ -54,7 +54,7 @@ function estado() {
 
 /* ---------- 1 · hero: el mosaico de los vecinos (la intro es el mosaico armándose) ---------- */
 const LUGAR = [
-  ['pasaje', 'El pasaje de mosaicos'], ['milanesa', 'Milanga napolitana'], ['cartel', 'El cartel del Almacén'], ['pavlova', 'Pavlova con frutillas'],
+  ['pasaje', 'El pasaje de mosaicos'], ['milanesa', 'Milanga napolitana'], ['combo-huevos', 'Combito de desayuno'], ['pavlova', 'Pavlova con frutillas'],
   ['salon', 'El salón'], ['peras', 'Peras al vino'], ['vereda', 'Las mesas de la vereda'], ['polenta', 'La polenta de almacén'],
   ['cafe-al-sol', 'Cafecito al sol'], ['ternera', 'Ternera con puré'],
 ];
@@ -121,7 +121,7 @@ function wow(productos) {
       el('image', { href: p.foto, x: x0, y: y0, width: lado, height: lado, preserveAspectRatio: 'xMidYMid slice', 'clip-path': `url(#${id})` }, g);
       g.classList.add('foto');
       if (p.disponible === false) { g.classList.add('off'); el('polygon', { points: pts(c), class: 'velo' }, g); }
-      g.setAttribute('tabindex', '0'); g.setAttribute('role', 'button');
+      g.setAttribute('tabindex', '0'); g.setAttribute('role', 'button'); g.dataset.i = s[3];
       g.setAttribute('aria-label', p.nombre + (p.disponible === false ? ' (hoy no sale)' : ''));
       g.addEventListener('click', () => abrir(g, p));
       g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(g, p); } });
@@ -152,14 +152,21 @@ function wow(productos) {
     wow.invitando = setInterval(() => {
       if (med.classList.contains('abierta') || !fotos.length) return;
       fotos.forEach(f => f.classList.remove('activa'));
-      fotos[i++ % fotos.length].classList.add('activa');
-    }, 1100);
+      const g = fotos[i++ % fotos.length]; g.classList.add('activa');
+      if (celu()) llenar(lista[g.dataset.i], true);
+    }, celu() ? 2600 : 1100);
+    if (celu() && fotos[0]) llenar(lista[fotos[0].dataset.i], true);
   }
   function abrir(g, p) {
     clearInterval(wow.invitando);
     grupos.forEach(([x]) => x.classList.remove('activa'));
     wow.activa = g; g.classList.add('activa'); med.classList.add('abierta');
+    llenar(p, false);
+    $('.ficha__x').focus({ preventScroll: true });
+  }
+  function llenar(p, ejemplo) {
     const ficha = $('#ficha'), sale = p.disponible !== false;
+    ficha.classList.toggle('ejemplo', ejemplo);
     $('#ficha-img').src = p.foto; $('#ficha-img').alt = p.nombre;
     $('#ficha-m').textContent = MOMENTO[p.categoria] || ''; $('#ficha-n').textContent = p.nombre; $('#ficha-d').textContent = p.descripcion || '';
     $('#ficha-hoy').textContent = sale ? 'hoy sale' : 'hoy no sale';
@@ -167,13 +174,12 @@ function wow(productos) {
     $('#ficha-wa').textContent = sale ? '¿Hay hoy? Preguntá' : 'Avisame cuando vuelva';
     $('#ficha-wa').href = `https://wa.me/${WA}?text=` + encodeURIComponent(sale ? `¡Hola! ¿Hoy hay ${p.nombre.toLowerCase()}?` : `¡Hola! ¿Cuándo vuelve ${p.nombre.toLowerCase()}?`);
     ficha.hidden = false; ficha.style.animation = 'none'; void ficha.offsetWidth; ficha.style.animation = '';
-    $('.ficha__x', ficha).focus({ preventScroll: true });
   }
   wow.invitar = invitar;
 }
 function wowCerrar() {
-  const ficha = $('#ficha'); if (ficha.hidden) return;
-  ficha.hidden = true; $('#medalla').classList.remove('abierta');
+  const ficha = $('#ficha'); if (ficha.hidden || ficha.classList.contains('ejemplo')) return;
+  ficha.hidden = !celu(); $('#medalla').classList.remove('abierta');
   wow.activa?.classList.remove('activa'); wow.activa?.focus({ preventScroll: true }); wow.activa = null; wow.invitar?.();
 }
 $('.ficha__x').addEventListener('click', wowCerrar);
@@ -273,13 +279,15 @@ addEventListener('scroll', () => {
   else if (y < yAnt - 6 || y < innerHeight * .5) b.classList.remove('oculta');
   yAnt = y;
 }, { passive: true });
-new MutationObserver(() => document.documentElement.classList.toggle('con-pop', !!document.querySelector('.kit-pop') || !$('#menu').hidden || (celu() && !$('#ficha').hidden)))
+new MutationObserver(() => document.documentElement.classList.toggle('con-pop', !!document.querySelector('.kit-pop') || !$('#menu').hidden || (celu() && $('#medalla').classList.contains('abierta'))))
   .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
 
 /* ---------- arranque ---------- */
 estado(); setInterval(estado, 60000);
 menu(); tira(); firma(); pared();
 new IntersectionObserver(([e]) => html.classList.toggle('pasado', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe($('.hero'));
+new IntersectionObserver(([e]) => html.classList.toggle('en-pie', e.isIntersecting)).observe($('.pie'));
+new IntersectionObserver(([e]) => html.classList.toggle('en-hero', e.intersectionRatio > .6), { threshold: [0, .6, 1] }).observe($('.hero'));
 let ancho = innerWidth;
 addEventListener('resize', () => { if (Math.abs(innerWidth - ancho) < 40) return; ancho = innerWidth; hero(false); pared(); });
 const conIntro = html.classList.contains('con-intro');
