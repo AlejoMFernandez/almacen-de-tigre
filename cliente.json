@@ -1,0 +1,403 @@
+{
+ "$schema": "../docs/cliente.schema.json",
+ "id": "almacen-de-tigre",
+ "nombre": "Almacén de Tigre",
+ "pais": "AR",
+ "idioma": "es",
+ "modo": "demo",
+ "whatsapp": "5491166476750",
+ "instagram": "almacendetigre",
+ "prefijoPedido": "AT",
+ "marca": {
+  "logo": "img/logo.svg",
+  "logoPanel": "img/logo-cal.svg",
+  "colores": {
+   "fondo": "#F5F1EA",
+   "superficie": "#FFFFFF",
+   "texto": "#2B1C16",
+   "primario": "#17716C",
+   "acento": "#B51E31",
+   "borde": "#DCD2C2"
+  },
+  "fuentes": {
+   "titulos": "'Forum', Georgia, serif",
+   "texto": "'Karla', system-ui, sans-serif",
+   "googleFonts": "",
+   "css": "css/fuentes.css"
+  },
+  "estilo": {
+   "forma": "recta",
+   "sombra": "suave",
+   "borde": "1px",
+   "mayusculas": false
+  }
+ },
+ "modulos": {
+  "carta": true,
+  "carrito": false,
+  "reservas": true,
+  "admin": true
+ },
+ "horarios": {
+  "lun": [
+   [
+    "09:30",
+    "17:00"
+   ]
+  ],
+  "mar": [
+   [
+    "09:30",
+    "17:00"
+   ]
+  ],
+  "mie": [
+   [
+    "09:30",
+    "17:00"
+   ]
+  ],
+  "jue": [
+   [
+    "09:30",
+    "17:00"
+   ]
+  ],
+  "vie": [
+   [
+    "09:30",
+    "17:00"
+   ]
+  ],
+  "sab": [
+   [
+    "09:30",
+    "20:00"
+   ]
+  ],
+  "dom": [
+   [
+    "09:30",
+    "20:00"
+   ]
+  ]
+ },
+ "reservas": {
+  "duracionMin": 90,
+  "maxPersonas": 10,
+  "anticipacionMin": 120,
+  "diasAdelante": 60,
+  "cerrados": [],
+  "servicios": []
+ },
+ "pedidos": {
+  "salidas": [
+   "whatsapp"
+  ],
+  "tipos": [
+   "retiro"
+  ],
+  "envio": 0,
+  "minimo": 0
+ },
+ "pagos": {
+  "mercadopago": {
+   "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference"
+  }
+ },
+ "carta": {
+  "categorias": [
+   {
+    "id": "desayunos",
+    "nombre": "Desayunos y meriendas"
+   },
+   {
+    "id": "entradas",
+    "nombre": "Entradas"
+   },
+   {
+    "id": "principales",
+    "nombre": "Principales"
+   },
+   {
+    "id": "ensaladas",
+    "nombre": "Ensaladas"
+   },
+   {
+    "id": "postres",
+    "nombre": "Postres"
+   }
+  ],
+  "productos": [
+   {
+    "id": "combo-huevos",
+    "categoria": "desayunos",
+    "nombre": "Combito de huevos revueltos",
+    "descripcion": "Huevos revueltos, tostadas, palta y tomates, con café y jugo de naranja. Hasta las 12:30.",
+    "precio": null,
+    "foto": "img/m-combo-huevos.webp"
+   },
+   {
+    "id": "combito-toston-palta",
+    "categoria": "desayunos",
+    "nombre": "Combito tostón de palta",
+    "descripcion": "Tostón con palta y huevo poché, con café y jugo de naranja. Hasta las 12:30.",
+    "precio": null,
+    "foto": "img/m-toston-palta.webp"
+   },
+   {
+    "id": "tostadas-mermelada",
+    "categoria": "desayunos",
+    "nombre": "Tostadas de pan casero",
+    "descripcion": "Con queso y mermelada casera.",
+    "precio": null
+   },
+   {
+    "id": "pasta-frola",
+    "categoria": "desayunos",
+    "nombre": "Pasta frola de abuela",
+    "descripcion": "El membrillo y la batata son caseros. Para el café de la tarde.",
+    "precio": null,
+    "foto": "img/m-pasta-frola.webp"
+   },
+   {
+    "id": "mortadela-pistacho",
+    "categoria": "entradas",
+    "nombre": "Mortadela con pistacho y stracciatella",
+    "descripcion": "Con pesto. Ideal con un tinto de verano.",
+    "precio": null,
+    "foto": "img/m-mortadela.webp"
+   },
+   {
+    "id": "stracciatella",
+    "categoria": "entradas",
+    "nombre": "Stracciatella con pesto",
+    "descripcion": "Pesto de albahaca y tomates dulces.",
+    "precio": null,
+    "foto": "img/m-stracciatella.webp"
+   },
+   {
+    "id": "huancaina",
+    "categoria": "entradas",
+    "nombre": "Papas a la huancaína",
+    "descripcion": "En honor a la ciudad de Huancayo, Perú.",
+    "precio": null,
+    "foto": "img/m-huancaina.webp"
+   },
+   {
+    "id": "toston-zanahorias",
+    "categoria": "entradas",
+    "nombre": "Tostón de zanahorias glaseadas",
+    "descripcion": "Con brie y verdes.",
+    "precio": null,
+    "foto": "img/m-toston-zanahorias.webp",
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "milanesa-napolitana",
+    "categoria": "principales",
+    "nombre": "Milanga napolitana con papas",
+    "descripcion": "Bien gratinada, con papas al horno y ensalada de rúcula y cherry.",
+    "precio": null,
+    "foto": "img/m-milanesa.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "ternera-pure",
+    "categoria": "principales",
+    "nombre": "Ternera con puré",
+    "descripcion": "Ternera braseada con puré y el jugo de la cocción. Rico, sano y fresco.",
+    "precio": null,
+    "foto": "img/m-ternera.webp",
+    "etiquetas": [
+     "casa"
+    ]
+   },
+   {
+    "id": "bife-a-caballo",
+    "categoria": "principales",
+    "nombre": "Bifecito a caballo",
+    "descripcion": "Bife con huevo frito y su guarnición.",
+    "precio": null,
+    "foto": "img/m-bife-a-caballo.webp"
+   },
+   {
+    "id": "polenta-almacen",
+    "categoria": "principales",
+    "nombre": "La polenta de almacén",
+    "descripcion": "Polenta cremosa con ragú y queso rallado. Para un día de frío.",
+    "precio": null,
+    "foto": "img/m-polenta.webp"
+   },
+   {
+    "id": "ravioles-estofado",
+    "categoria": "principales",
+    "nombre": "Ravioles de espinaca y ricota",
+    "descripcion": "Con estofado.",
+    "precio": null,
+    "foto": "img/m-ravioles.webp"
+   },
+   {
+    "id": "pesca-al-punto",
+    "categoria": "principales",
+    "nombre": "La pesca al punto",
+    "descripcion": "Pescado a la cazuela con tomates y aceitunas negras.",
+    "precio": null,
+    "foto": "img/m-pesca.webp"
+   },
+   {
+    "id": "cazuela-humita",
+    "categoria": "principales",
+    "nombre": "Cazuela de humita y pollo al verdeo",
+    "descripcion": "Gratinada en cazuela de barro. La de los días de lluvia.",
+    "precio": null,
+    "foto": "img/m-humita.webp"
+   },
+   {
+    "id": "risotto-hongos",
+    "categoria": "principales",
+    "nombre": "Risotto de hongos",
+    "descripcion": "Hongos de pino y portobello.",
+    "precio": null,
+    "foto": "img/m-risotto.webp",
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "noquis-semola",
+    "categoria": "principales",
+    "nombre": "Ñoquis de sémola gratinados",
+    "descripcion": "Salsa de puerros, portobellos y crema, gratinados con parmesano picoso.",
+    "precio": null,
+    "foto": "img/m-noquis.webp",
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "lentejas",
+    "categoria": "principales",
+    "nombre": "Guisito de lentejas con chorizo",
+    "descripcion": "Con limonada absorben mejor el hierro.",
+    "precio": null,
+    "foto": "img/m-lentejas.webp",
+    "disponible": false
+   },
+   {
+    "id": "mondongo",
+    "categoria": "principales",
+    "nombre": "Mondongo",
+    "descripcion": "Porque el mundo se divide entre los que sí y los que ni locos.",
+    "precio": null,
+    "foto": "img/m-mondongo.webp",
+    "disponible": false
+   },
+   {
+    "id": "falafel",
+    "categoria": "principales",
+    "nombre": "Falafel de garbanzos",
+    "descripcion": "La opción vegana.",
+    "precio": null,
+    "foto": "img/m-falafel.webp",
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "ensalada-pollo-brie",
+    "categoria": "ensaladas",
+    "nombre": "Ensalada de pollo y brie",
+    "descripcion": "Las mejores ensaladas las hace Luchi.",
+    "precio": null,
+    "foto": "img/m-ensalada-pollo-brie.webp"
+   },
+   {
+    "id": "ensalada-azul",
+    "categoria": "ensaladas",
+    "nombre": "Ensalada de pollo, queso azul y huevo poché",
+    "descripcion": "Si no te va el azul, te la hacemos con parmesano.",
+    "precio": null,
+    "foto": "img/m-ensalada-azul.webp"
+   },
+   {
+    "id": "ensalada-langostinos",
+    "categoria": "ensaladas",
+    "nombre": "Ensalada de langostinos, naranja y palta",
+    "descripcion": "",
+    "precio": null,
+    "foto": "img/m-langostinos.webp"
+   },
+   {
+    "id": "ensalada-duraznos",
+    "categoria": "ensaladas",
+    "nombre": "Ensalada de duraznos y brie",
+    "descripcion": "De temporada, cuando los duraznos están dulces.",
+    "precio": null,
+    "foto": "img/m-duraznos.webp",
+    "etiquetas": [
+     "veggie"
+    ],
+    "disponible": false
+   },
+   {
+    "id": "peras-al-vino",
+    "categoria": "postres",
+    "nombre": "Peras al vino",
+    "descripcion": "Un clasiquísimo.",
+    "precio": null,
+    "foto": "img/m-peras.webp"
+   },
+   {
+    "id": "pavlova",
+    "categoria": "postres",
+    "nombre": "Pavlova con frutillas",
+    "descripcion": "Crema pastelera y frutillas en su mejor momento.",
+    "precio": null,
+    "foto": "img/m-pavlova.webp"
+   },
+   {
+    "id": "panqueque",
+    "categoria": "postres",
+    "nombre": "Panqueque flambeado",
+    "descripcion": "",
+    "precio": null
+   },
+   {
+    "id": "cheesecake-lima",
+    "categoria": "postres",
+    "nombre": "Cheesecake de lima",
+    "descripcion": "",
+    "precio": null
+   }
+  ]
+ },
+ "textos": {
+  "sinPrecio": "Precio a confirmar",
+  "noDisponible": "Hoy no sale",
+  "reservarMesa": "Reservá para una fecha especial"
+ },
+ "eventosTipos": [
+  {
+   "id": "especial",
+   "nombre": "Fecha especial"
+  }
+ ],
+ "eventos": [
+  {
+   "id": "feriado-8-dic",
+   "tipo": "especial",
+   "nombre": "Feriado del 8 de diciembre (ejemplo)",
+   "fecha": "2026-12-08",
+   "hora": "13:00",
+   "cupo": 30,
+   "precio": null,
+   "descripcion": "Un ejemplo de fecha especial: el resto del año no tomamos reservas.",
+   "reserva": true
+  }
+ ]
+}

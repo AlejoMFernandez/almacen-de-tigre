@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Almacén de Tigre · Cocina casera todo el día en el Boulevard Sáenz Peña</title>
+<meta name="description" content="Hace quince años, el primer almacén del Boulevard Sáenz Peña. Cocina casera todo el día, sin reservas, en el pasaje de los mosaicos de Tigre.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Almacén de Tigre">
+<meta property="og:title" content="Almacén de Tigre · el primero del Boulevard">
+<meta property="og:description" content="Cocina casera todo el día en el pasaje de los mosaicos, Tigre. La carta, lo que hay hoy y cómo llegar.">
+<meta property="og:url" content="https://almacen-de-tigre.vercel.app/">
+<meta property="og:image" content="https://almacen-de-tigre.vercel.app/img/og.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Mosaico de colores con fotos del pasaje y los platos, y el nombre Almacén de Tigre al centro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://almacen-de-tigre.vercel.app/img/og.jpg?v=1">
+<meta name="theme-color" content="#F5F1EA">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con-intro');}})();
+</script>
+<link rel="preload" href="fonts/forum-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playwrite-ar-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fuentes.css?v=1">
+<link rel="stylesheet" href="kit/kit.css?v=1">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/almacen.css?v=2">
+</head>
+<body>
+
+<header class="barra">
+  <a class="logo" href="#top" aria-label="Almacén de Tigre, ir al inicio"><img src="img/logo.svg" alt="" width="220" height="220"></a>
+  <button class="pieza pieza--chica menu-btn" id="abrir-menu" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+</header>
+
+<nav class="menu" id="menu" hidden aria-label="Secciones">
+  <div class="menu__mosaico">
+    <a class="tesel tesel--foto" href="#hoy" style="background-image:url(img/m-milanesa.webp)"><span>hoy en la cocina</span></a>
+    <a class="tesel tesel--rojo" href="#carta"><span>la carta</span></a>
+    <a class="tesel tesel--foto" href="#pasaje" style="background-image:url(img/p-pasaje-560.webp)"><span>el pasaje</span></a>
+    <a class="tesel tesel--foto" href="#luchi" style="background-image:url(img/p-luchi-560.webp)"><span>sin reservas</span></a>
+    <a class="tesel tesel--verde" href="#llegar"><span>cómo llegar</span></a>
+    <a class="tesel tesel--yema" href="https://wa.me/5491166476750" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+  </div>
+  <button class="menu__cerrar" type="button" aria-label="Cerrar el menú">×</button>
+</nav>
+
+<main id="top">
+  <!-- 1 · el mosaico de los vecinos -->
+  <section class="hero" aria-labelledby="hb-t">
+    <svg class="hero__svg" id="hb-svg" role="img" aria-label="Mosaico con fotos del pasaje, la cocina y los platos de Almacén de Tigre"></svg>
+    <div class="placa" id="hb-placa">
+      <h1 id="hb-t" class="placa__nombre">Almacén <span>de Tigre</span></h1>
+      <p class="placa__escrito">el primero del Boulevard</p>
+      <p class="placa__txt">Quince años de cocina casera en un pasaje de mosaicos que hicieron más de doscientos vecinos.</p>
+      <div class="placa__pie">
+        <a class="pieza pieza--verde" href="#hoy">Ver qué hay hoy</a>
+        <p class="estado" id="estado"><span class="estado__punto"></span><span id="estado-txt">Todos los días desde las 9:30</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · WOW: cada pieza, un plato -->
+  <section class="wow" id="hoy" aria-labelledby="wow-t">
+    <header class="cab">
+      <p class="sobre">Hoy en la cocina</p>
+      <h2 id="wow-t" class="escrito">cada pieza, un plato</h2>
+      <p class="cab__bajada">El pasaje lo armaron doscientos vecinos con pedacitos de azulejo. Este lo arma Luchi con lo que sale de la cocina. Las piezas apagadas son las que hoy no salen.</p>
+    </header>
+    <div class="medalla" id="medalla">
+      <svg id="wow-svg" class="medalla__svg" viewBox="0 0 1000 1000" role="group" aria-label="Mosaico de platos: tocá una pieza"></svg>
+      <div class="medalla__placa" id="wow-invita" aria-hidden="true">
+        <span class="escrito">tocá una pieza</span>
+        <span class="medalla__mini">y te contamos qué es</span>
+      </div>
+      <div class="ficha" id="ficha" role="dialog" aria-modal="false" aria-labelledby="ficha-n" hidden>
+        <button class="ficha__x" type="button" aria-label="Cerrar">×</button>
+        <div class="ficha__foto"><img id="ficha-img" alt="" width="640" height="640"></div>
+        <div class="ficha__cuerpo">
+          <p class="ficha__momento"><span id="ficha-m"></span><span class="ficha__hoy" id="ficha-hoy">hoy sale</span></p>
+          <h3 id="ficha-n" class="ficha__nombre"></h3>
+          <p id="ficha-d" class="ficha__desc"></p>
+          <div class="ficha__pie">
+            <span class="ficha__precio">Precio a confirmar</span>
+            <a class="pieza pieza--verde pieza--chica" id="ficha-wa" href="https://wa.me/5491166476750" target="_blank" rel="noopener">¿Hay hoy? Preguntá</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · la carta, frente a la pared lalala -->
+  <section class="carta" id="carta" aria-labelledby="carta-t">
+    <div class="carta__pared" aria-hidden="true" id="pared"></div>
+    <header class="cab cab--claro">
+      <p class="sobre">Desde el desayuno hasta el cierre</p>
+      <h2 id="carta-t" class="escrito">la carta del almacén</h2>
+      <p class="cab__bajada">Lo que sale de la cocina de Luchi. Cambia con la estación: lo que hoy no sale, lo marcamos.</p>
+    </header>
+    <div class="pizarra">
+      <div class="pizarra__carta" data-kit="carta" data-kit-pedir="false" aria-busy="true"></div>
+      <div class="pizarra__pie">
+        <p>Los precios se confirman en el local.</p>
+        <a class="pieza pieza--verde" href="carta/">Ver la carta completa</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · el pasaje, quince años -->
+  <section class="pasaje" id="pasaje" aria-labelledby="pasaje-t">
+    <header class="cab cab--izq">
+      <p class="sobre">Boulevard Sáenz Peña 1336</p>
+      <h2 id="pasaje-t" class="escrito">quince años en el pasaje</h2>
+      <p class="cab__bajada">Antes de que el Boulevard fuera el distrito de arte y diseño de Tigre, acá ya había un almacén.</p>
+    </header>
+    <div class="tira" id="tira" tabindex="0" aria-label="Fotos del pasaje, deslizá para ver más">
+      <figure class="pz" style="--r:-1.5deg"><div class="pz__img"><img src="img/p-cartel-560.webp" srcset="img/p-cartel-560.webp 560w, img/p-cartel-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El cartel festoneado del Almacén frente al árbol de mosaico" loading="lazy" decoding="async"></div>
+        <figcaption><b>El primero del Boulevard</b>Hace quince años abrimos en un viejo almacén de ramos generales.</figcaption></figure>
+      <figure class="pz pz--b" style="--r:1.2deg"><div class="pz__img"><img src="img/p-pasaje-560.webp" srcset="img/p-pasaje-560.webp 560w, img/p-pasaje-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El pasaje con murales y mosaicos, con sol" loading="lazy" decoding="async"></div>
+        <figcaption><b>Un mosaico de doscientos vecinos</b>Lo armaron juntos, pedacito a pedacito, con Marcelo Gaggino.</figcaption></figure>
+      <figure class="pz pz--c" style="--r:-.8deg"><div class="pz__img"><img src="img/p-vereda-560.webp" srcset="img/p-vereda-560.webp 560w, img/p-vereda-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="Las mesas de la vereda junto al mosaico" loading="lazy" decoding="async"></div>
+        <figcaption><b>Las mesitas de la vereda</b>Sol y comer rico en un lugarcito tranquilo.</figcaption></figure>
+      <figure class="pz pz--d" style="--r:1.6deg"><div class="pz__img"><img src="img/p-ventana-560.webp" srcset="img/p-ventana-560.webp 560w, img/p-ventana-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="La ventana del mural que se ve desde la cocina" loading="lazy" decoding="async"></div>
+        <figcaption><b>La ventana de la cocina</b>La que miramos mientras preparamos la cheesecake de lima.</figcaption></figure>
+      <figure class="pz pz--e" style="--r:-1.2deg"><div class="pz__img"><img src="img/p-salon-560.webp" srcset="img/p-salon-560.webp 560w, img/p-salon-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El salón, con arte en las paredes" loading="lazy" decoding="async"></div>
+        <figcaption><b>Arte en cada pared</b>Y arriba, con el aire en la nuca, una vista al Boulevard.</figcaption></figure>
+      <figure class="pz pz--f" style="--r:1deg"><div class="pz__img"><img src="img/p-domingo-560.webp" srcset="img/p-domingo-560.webp 560w, img/p-domingo-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El pasaje un domingo a la mañana" loading="lazy" decoding="async"></div>
+        <figcaption><b>Domingo a la mañana</b>Abrimos a las 9:30 para tu cafecito al sol.</figcaption></figure>
+    </div>
+    <div class="tira__flechas" aria-hidden="false">
+      <button type="button" class="flecha" data-dir="-1" aria-label="Fotos anteriores">←</button>
+      <button type="button" class="flecha" data-dir="1" aria-label="Fotos siguientes">→</button>
+    </div>
+  </section>
+
+  <!-- 5 · Luchi y sin reservas -->
+  <section class="luchi" id="luchi" aria-labelledby="luchi-t">
+    <figure class="luchi__foto"><div class="pz__img"><img src="img/p-luchi-560.webp" srcset="img/p-luchi-560.webp 560w, img/p-luchi-900.webp 900w" sizes="(min-width: 900px) 40vw, 90vw" width="900" height="1200" alt="Luchi, la cocinera del Almacén" loading="lazy" decoding="async"></div></figure>
+    <div class="luchi__txt">
+      <p class="sobre">La cocina</p>
+      <h2 id="luchi-t" class="escrito">todo con amor</h2>
+      <p>La cocina es de Luchi y está abierta siempre que estamos abiertos: para el desayuno, el almuerzo o una cena temprana. Cocina casera, rica, sana y fresca, que cambia con la estación.</p>
+      <div class="sinres">
+        <p class="sinres__t">Sin reservas</p>
+        <p>Venís y comés: la mesa es del que llega. Solo para algunas fechas especiales abrimos un cupo para los que les gusta organizarse.</p>
+        <p class="sinres__ev" id="prox-ev" hidden></p>
+        <button type="button" class="pieza pieza--verde" id="btn-evento">Anotarte a una fecha especial</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · cómo llegar -->
+  <section class="llegar" id="llegar" aria-labelledby="llegar-t">
+    <div class="llegar__info">
+      <p class="sobre">Cómo llegar</p>
+      <h2 id="llegar-t" class="escrito">te esperamos</h2>
+      <p class="llegar__dir">Boulevard Sáenz Peña 1336, Tigre</p>
+      <p class="estado estado--tinta" id="estado-2"><span class="estado__punto"></span><span id="estado-2-txt">Todos los días desde las 9:30</span></p>
+      <dl class="horas" id="horas">
+        <div data-dias="1,2,3,4,5"><dt>Lunes a viernes</dt><dd>9:30 a 17</dd></div>
+        <div data-dias="6,0"><dt>Sábados y domingos</dt><dd>9:30 a 20</dd></div>
+        <div data-dias="f"><dt>Feriados</dt><dd>9:30 a 20</dd></div>
+      </dl>
+      <p class="llegar__nota">La cocina está abierta hasta el cierre. Combitos de desayuno hasta las 12:30.</p>
+      <div class="llegar__btns">
+        <a class="pieza pieza--verde" href="https://www.google.com/maps/dir/?api=1&amp;destination=-34.4220345,-58.5757068" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="pieza" href="https://wa.me/5491166476750" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="mapa" id="mapa" role="region" aria-label="Mapa: Almacén de Tigre en Boulevard Sáenz Peña 1336, Tigre"></div>
+  </section>
+</main>
+
+<footer class="pie">
+  <img src="img/logo-cal.svg" alt="Almacén de Tigre" width="96" height="96" loading="lazy">
+  <p>Boulevard Sáenz Peña 1336, Tigre · <a href="https://www.instagram.com/almacendetigre/" target="_blank" rel="noopener">@almacendetigre</a> · <a href="https://wa.me/5491166476750" target="_blank" rel="noopener">11 6647-6750</a></p>
+  <p class="pie__frase">la ternura es una fuerza</p>
+  <p class="credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
+</footer>
+
+<script type="module" src="js/almacen.js?v=2"></script>
+<script type="module">
+  import { initKit } from './kit/kit.js?v=1';
+  window.kit = await initKit({
+    config: 'cliente.json',
+    carta: {
+      itemClass: 'plato',
+      template: (p, ctx) => `<div class="plato__cuerpo"><h3 class="plato__n">${ctx.esc ? ctx.esc(p.nombre) : p.nombre.replace(/[<>&]/g, '')}${(p.etiquetas || []).includes('veggie') ? ' <span class="plato__tag">veggie</span>' : ''}</h3>${p.descripcion ? `<p class="plato__d">${p.descripcion.replace(/[<>&]/g, '')}</p>` : ''}</div>${p.disponible === false ? '<span class="plato__no">hoy no sale</span>' : ''}`,
+    },
+    badge: true,
+    imagenes: { lqip: 'img/lqip.json' },
+  });
+  document.dispatchEvent(new CustomEvent('almacen:kit'));
+</script>
+</body>
+</html>
