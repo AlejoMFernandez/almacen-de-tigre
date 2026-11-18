@@ -33,7 +33,7 @@ function voronoi(semillas, borde) {
 const centro = poly => { let x = 0, y = 0; poly.forEach(p => { x += p[0]; y += p[1]; }); return [x / poly.length, y / poly.length]; };
 const pts = poly => poly.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
 function el(tag, attrs = {}, padre) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); padre && padre.appendChild(e); return e; }
-const COLORES = ['#D8283E', '#2FA6A0', '#F2C230', '#F2A7B5', '#17716C', '#B51E31', '#E9DFCF', '#2FA6A0', '#F2C230'];
+const COLORES = ['#D8283E', '#2FA6A0', '#F2C230', '#F2A7B5', '#17716C', '#B51E31', '#F2C230', '#2FA6A0', '#D8283E'];
 function caja(c) { const xs = c.map(p => p[0]), ys = c.map(p => p[1]), x0 = Math.min(...xs), y0 = Math.min(...ys); return [x0, y0, Math.max(Math.max(...xs) - x0, Math.max(...ys) - y0)]; }
 
 /* ---------- horario (hora de Buenos Aires) ---------- */
@@ -54,9 +54,9 @@ function estado() {
 
 /* ---------- 1 · hero: el mosaico de los vecinos (la intro es el mosaico armándose) ---------- */
 const LUGAR = [
-  ['pasaje', 'El pasaje de mosaicos'], ['cartel', 'El cartel del Almacén'], ['milanesa', 'Milanga napolitana'], ['salon', 'El salón'],
-  ['peras', 'Peras al vino'], ['luchi', 'Luchi, en la cocina'], ['ventana-mural', 'La ventana del mural'], ['vereda', 'Las mesas de la vereda'],
-  ['polenta', 'La polenta de almacén'], ['cafe-al-sol', 'Cafecito al sol'],
+  ['pasaje', 'El pasaje de mosaicos'], ['milanesa', 'Milanga napolitana'], ['cartel', 'El cartel del Almacén'], ['pavlova', 'Pavlova con frutillas'],
+  ['salon', 'El salón'], ['peras', 'Peras al vino'], ['vereda', 'Las mesas de la vereda'], ['polenta', 'La polenta de almacén'],
+  ['cafe-al-sol', 'Cafecito al sol'], ['ternera', 'Ternera con puré'],
 ];
 function hero(animar) {
   $('.hero').style.setProperty('--alto', innerHeight + 'px');
@@ -107,7 +107,7 @@ function wow(productos) {
   svg.innerHTML = '';
   const R = 490, C = 500, r = azar(200), sem = [], n = lista.length;
   lista.forEach((p, i) => { const a = i / n * Math.PI * 2 + (r() - .5) * .25 - Math.PI / 2, rr = 345 + (r() - .5) * 40; sem.push([C + Math.cos(a) * rr, C + Math.sin(a) * rr, 'foto', i]); });
-  for (let i = 0; i < 12; i++) { const a = (i + .5) / 12 * Math.PI * 2 + (r() - .5) * .3 - Math.PI / 2; sem.push([C + Math.cos(a) * 500, C + Math.sin(a) * 500, 'color']); }
+  for (let i = 0; i < 8; i++) { const a = (i + .5) / 8 * Math.PI * 2 + (r() - .5) * .3 - Math.PI / 2; sem.push([C + Math.cos(a) * 560, C + Math.sin(a) * 560, 'color']); }
   for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2 + r(); sem.push([C + Math.cos(a) * 130, C + Math.sin(a) * 130, 'color']); }
   sem.push([C, C, 'color']);
   const borde = Array.from({ length: 72 }, (_, i) => [C + Math.cos(i / 72 * Math.PI * 2) * R, C + Math.sin(i / 72 * Math.PI * 2) * R]);
@@ -222,7 +222,7 @@ function proximoEvento() {
   if (!ev) { p.hidden = true; b.hidden = true; return; }
   const [y, m, d] = ev.fecha.split('-').map(Number);
   const fecha = new Intl.DateTimeFormat('es-AR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(y, m - 1, d)));
-  p.textContent = `Próxima: ${ev.nombre} · ${fecha}, ${ev.hora}`; p.hidden = false; b.hidden = false; b.dataset.ev = ev.id;
+  p.textContent = `Próxima fecha: ${fecha}, ${ev.hora} hs${/ejemplo/i.test(ev.nombre) ? ' (ejemplo)' : ''}`; p.hidden = false; b.hidden = false; b.dataset.ev = ev.id;
 }
 $('#btn-evento').addEventListener('click', e => window.kit?.reservas?.abrir({ evento: e.currentTarget.dataset.ev, personas: 2 }));
 document.addEventListener('almacen:kit', proximoEvento);
@@ -264,6 +264,17 @@ function firma() {
   const io = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); } }), { threshold: .12 });
   cosas.forEach(c => io.observe(c));
 }
+
+/* ---------- la barra se esconde al bajar; con popups abiertos se corre ---------- */
+let yAnt = 0;
+addEventListener('scroll', () => {
+  const y = scrollY, b = $('.barra');
+  if (y > innerHeight * .8 && y > yAnt + 6) b.classList.add('oculta');
+  else if (y < yAnt - 6 || y < innerHeight * .5) b.classList.remove('oculta');
+  yAnt = y;
+}, { passive: true });
+new MutationObserver(() => document.documentElement.classList.toggle('con-pop', !!document.querySelector('.kit-pop') || !$('#menu').hidden || (celu() && !$('#ficha').hidden)))
+  .observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden'] });
 
 /* ---------- arranque ---------- */
 estado(); setInterval(estado, 60000);

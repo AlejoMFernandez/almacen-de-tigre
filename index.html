@@ -28,7 +28,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
 <link rel="stylesheet" href="css/fuentes.css?v=1">
 <link rel="stylesheet" href="kit/kit.css?v=1">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="css/almacen.css?v=2">
+<link rel="stylesheet" href="css/almacen.css?v=3">
 </head>
 <body>
 
@@ -77,6 +77,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
         <span class="escrito">tocá una pieza</span>
         <span class="medalla__mini">y te contamos qué es</span>
       </div>
+      <p class="medalla__vacia" aria-hidden="true">Tocá una pieza del mosaico y acá te contamos qué plato es y si hoy sale.</p>
       <div class="ficha" id="ficha" role="dialog" aria-modal="false" aria-labelledby="ficha-n" hidden>
         <button class="ficha__x" type="button" aria-label="Cerrar">×</button>
         <div class="ficha__foto"><img id="ficha-img" alt="" width="640" height="640"></div>
@@ -122,14 +123,14 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
         <figcaption><b>El primero del Boulevard</b>Hace quince años abrimos en un viejo almacén de ramos generales.</figcaption></figure>
       <figure class="pz pz--b" style="--r:1.2deg"><div class="pz__img"><img src="img/p-pasaje-560.webp" srcset="img/p-pasaje-560.webp 560w, img/p-pasaje-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El pasaje con murales y mosaicos, con sol" loading="lazy" decoding="async"></div>
         <figcaption><b>Un mosaico de doscientos vecinos</b>Lo armaron juntos, pedacito a pedacito, con Marcelo Gaggino.</figcaption></figure>
-      <figure class="pz pz--c" style="--r:-.8deg"><div class="pz__img"><img src="img/p-vereda-560.webp" srcset="img/p-vereda-560.webp 560w, img/p-vereda-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="Las mesas de la vereda junto al mosaico" loading="lazy" decoding="async"></div>
-        <figcaption><b>Las mesitas de la vereda</b>Sol y comer rico en un lugarcito tranquilo.</figcaption></figure>
-      <figure class="pz pz--d" style="--r:1.6deg"><div class="pz__img"><img src="img/p-ventana-560.webp" srcset="img/p-ventana-560.webp 560w, img/p-ventana-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="La ventana del mural que se ve desde la cocina" loading="lazy" decoding="async"></div>
-        <figcaption><b>La ventana de la cocina</b>La que miramos mientras preparamos la cheesecake de lima.</figcaption></figure>
+      <figure class="pz pz--c" style="--r:-.8deg"><div class="pz__img"><img src="img/p-murales-560.webp" srcset="img/p-murales-560.webp 560w, img/p-murales-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="Murales y mosaicos del pasaje" loading="lazy" decoding="async"></div>
+        <figcaption><b>Arte en cada pared</b>El Boulevard es el distrito de arte y diseño de Tigre, y el pasaje es su galería.</figcaption></figure>
+      <figure class="pz pz--d" style="--r:1.6deg"><div class="pz__img"><img src="img/p-cafe-560.webp" srcset="img/p-cafe-560.webp 560w, img/p-cafe-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="Una mesa al sol en el pasaje" loading="lazy" decoding="async"></div>
+        <figcaption><b>Las mesitas de la vereda</b>Desde las 9:30, para tu cafecito al sol.</figcaption></figure>
       <figure class="pz pz--e" style="--r:-1.2deg"><div class="pz__img"><img src="img/p-salon-560.webp" srcset="img/p-salon-560.webp 560w, img/p-salon-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El salón, con arte en las paredes" loading="lazy" decoding="async"></div>
-        <figcaption><b>Arte en cada pared</b>Y arriba, con el aire en la nuca, una vista al Boulevard.</figcaption></figure>
+        <figcaption><b>El salón</b>Y arriba, con el aire en la nuca, una vista al Boulevard.</figcaption></figure>
       <figure class="pz pz--f" style="--r:1deg"><div class="pz__img"><img src="img/p-domingo-560.webp" srcset="img/p-domingo-560.webp 560w, img/p-domingo-900.webp 900w" sizes="(min-width: 900px) 340px, 74vw" width="900" height="1200" alt="El pasaje un domingo a la mañana" loading="lazy" decoding="async"></div>
-        <figcaption><b>Domingo a la mañana</b>Abrimos a las 9:30 para tu cafecito al sol.</figcaption></figure>
+        <figcaption><b>Domingo a la mañana</b>El pasaje antes de que llegue la gente.</figcaption></figure>
     </div>
     <div class="tira__flechas" aria-hidden="false">
       <button type="button" class="flecha" data-dir="-1" aria-label="Fotos anteriores">←</button>
@@ -182,7 +183,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
   <p class="credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
 </footer>
 
-<script type="module" src="js/almacen.js?v=2"></script>
+<script type="module" src="js/almacen.js?v=3"></script>
 <script type="module">
   import { initKit } from './kit/kit.js?v=1';
   window.kit = await initKit({

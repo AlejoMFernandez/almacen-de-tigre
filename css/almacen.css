@@ -276,3 +276,55 @@ html:not(.intro-fin).con-intro body{animation:introSeguro 0s 5s forwards}
 @media (min-width:1200px){.pizarra__carta{column-count:4;column-gap:44px}}
 .carta{padding-top:clamp(80px,9vw,140px);padding-bottom:clamp(80px,9vw,140px)}
 @media (min-width:900px){.cab h2{white-space:nowrap}}
+
+/* ——— vuelta del revisor ——— */
+.cab h2,.wow h2{line-height:2.1;margin-top:.1em}
+.cab__bajada{margin-top:14px}
+.llegar h2{line-height:2.1}
+.llegar__dir{margin-top:6px}
+.luchi__txt h2{line-height:2.1;margin:0}
+.luchi__txt > p{margin-top:12px}
+/* la barra se esconde al bajar y vuelve al subir; con un popup abierto no estorba */
+.barra{transition:transform .35s cubic-bezier(.3,.7,.2,1),opacity .3s}
+.barra.oculta{transform:translateY(-140%)}
+.con-pop .barra,.con-pop .kit-demo-pill{opacity:0;pointer-events:none}
+.pasado .logo{width:60px}
+.pasado .barra .menu-btn{box-shadow:0 6px 14px rgba(43,28,22,.25)}
+/* menú: 3 × 2 sin huecos */
+@media (min-width:900px){.menu__mosaico{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr 1fr}.tesel:first-child{grid-row:auto}}
+/* WOW en el celu: el medallón queda a la vista y la ficha sale debajo, del mismo tamaño siempre */
+@media (max-width:899px){
+  .medalla{height:auto;grid-template-rows:var(--d) 236px;gap:18px;place-items:stretch center}
+  .medalla__svg{grid-row:1}
+  .ficha,.medalla__vacia{grid-row:2;position:relative;left:auto;top:auto;transform:none;width:min(calc(100vw - 32px),420px);height:236px;grid-template-rows:none;grid-template-columns:118px 1fr}
+  .ficha{animation:fichaCelu .4s cubic-bezier(.2,.9,.25,1.1)}
+  .ficha__cuerpo{padding:14px 16px 16px}
+  .ficha__nombre{font-size:21px;margin:6px 0 4px}
+  .ficha__desc{font-size:14.5px;-webkit-line-clamp:3;height:4.5em}
+  .ficha__pie{flex-direction:column;align-items:flex-start;gap:8px}
+  .ficha__x{top:6px;right:6px;width:44px;height:44px}
+  .ficha__momento{padding-right:40px;flex-wrap:wrap;gap:4px}
+  .medalla__vacia{display:grid;place-items:center;text-align:center;background:var(--cal-2);clip-path:polygon(0 3%,50% 0,100% 4%,98% 100%,0 96%);color:var(--tinta-2);font-size:15px;padding:0 24px}
+  .medalla.abierta .medalla__vacia{display:none}
+}
+@media (min-width:900px){.medalla__vacia{display:none}.ficha{height:440px}}
+@keyframes fichaCelu{from{opacity:0;transform:translateY(20px)}}
+.wow{padding-bottom:clamp(72px,8vw,120px)}
+/* popup del kit con piezas de venecita */
+.kit-pop button[type="submit"],.kit-pop .kit-btn--primary{clip-path:polygon(2% 0,62% 4%,100% 0,98% 52%,100% 100%,38% 95%,0 100%,1.5% 47%);border-radius:0}
+@media (max-width:899px){
+  .medalla{grid-template-rows:var(--d) 292px}
+  .ficha,.medalla__vacia{height:292px;grid-template-columns:104px 1fr}
+  .ficha__nombre{height:2.3em;line-height:1.15}
+  .ficha__desc{-webkit-line-clamp:2;height:3em;font-size:14.5px}
+  .ficha__pie{gap:6px}
+  .ficha__precio{font-size:13.5px}
+  .medalla__placa{top:calc(var(--d) / 2)}
+}
+@media (min-width:900px){
+  .plato.kit-item{padding:9px 0}
+  .plato__n{font-size:19.5px}
+  .plato__d{font-size:14.5px;margin-top:1px}
+  .pizarra{padding:clamp(24px,3vw,48px)}
+  .pizarra .kit-carta__panel{margin-bottom:18px}
+}
