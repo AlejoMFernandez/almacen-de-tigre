@@ -28,7 +28,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
 <link rel="stylesheet" href="css/fuentes.css?v=1">
 <link rel="stylesheet" href="kit/kit.css?v=1">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="css/almacen.css?v=5">
+<link rel="stylesheet" href="css/almacen.css?v=7">
 </head>
 <body>
 
@@ -79,7 +79,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
       </div>
       <div class="ficha" id="ficha" role="dialog" aria-modal="false" aria-labelledby="ficha-n" hidden>
         <button class="ficha__x" type="button" aria-label="Cerrar">×</button>
-        <div class="ficha__foto"><img id="ficha-img" alt="" width="640" height="640"></div>
+        <div class="ficha__foto"><img id="ficha-img" alt="" width="640" height="640" loading="lazy" decoding="async"></div>
         <div class="ficha__cuerpo">
           <p class="ficha__momento"><span id="ficha-m"></span><span class="ficha__hoy" id="ficha-hoy">hoy sale</span></p>
           <h3 id="ficha-n" class="ficha__nombre"></h3>
@@ -182,7 +182,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('con
   <p class="credito">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
 </footer>
 
-<script type="module" src="js/almacen.js?v=5"></script>
+<script type="module" src="js/almacen.js?v=7"></script>
 <script type="module">
   import { initKit } from './kit/kit.js?v=1';
   window.kit = await initKit({

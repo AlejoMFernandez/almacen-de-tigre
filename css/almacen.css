@@ -345,3 +345,11 @@ html:not(.en-hero):not(.en-pie) .kit-demo-pill{opacity:0;pointer-events:none}
   .ficha__nombre{font-size:21px}
   .ficha__pie{flex-direction:row;align-items:center}
 }
+
+@media (max-width:899px){
+  .ficha{grid-template-rows:112px 1fr}
+  .ficha__foto img{object-position:50% 50%}
+  .ficha__nombre{margin:4px 0 4px}
+  .ficha__desc{line-height:1.45;height:calc(2.9em + 2px);-webkit-line-clamp:2;margin-bottom:14px}
+}
+.ficha__precio{white-space:nowrap}

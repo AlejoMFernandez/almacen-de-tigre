@@ -54,7 +54,7 @@ function estado() {
 
 /* ---------- 1 · hero: el mosaico de los vecinos (la intro es el mosaico armándose) ---------- */
 const LUGAR = [
-  ['pasaje', 'El pasaje de mosaicos'], ['milanesa', 'Milanga napolitana'], ['combo-huevos', 'Combito de desayuno'], ['pavlova', 'Pavlova con frutillas'],
+  ['pasaje', 'El pasaje de mosaicos'], ['milanesa', 'Milanga napolitana'], ['pesca', 'La pesca al punto'], ['pavlova', 'Pavlova con frutillas'],
   ['salon', 'El salón'], ['peras', 'Peras al vino'], ['vereda', 'Las mesas de la vereda'], ['polenta', 'La polenta de almacén'],
   ['cafe-al-sol', 'Cafecito al sol'], ['ternera', 'Ternera con puré'],
 ];
@@ -155,7 +155,7 @@ function wow(productos) {
       const g = fotos[i++ % fotos.length]; g.classList.add('activa');
       if (celu()) llenar(lista[g.dataset.i], true);
     }, celu() ? 2600 : 1100);
-    if (celu() && fotos[0]) llenar(lista[fotos[0].dataset.i], true);
+    if (fotos[0]) { fotos[0].classList.add('activa'); i = 1; if (celu()) llenar(lista[fotos[0].dataset.i], true); }
   }
   function abrir(g, p) {
     clearInterval(wow.invitando);
@@ -171,7 +171,7 @@ function wow(productos) {
     $('#ficha-m').textContent = MOMENTO[p.categoria] || ''; $('#ficha-n').textContent = p.nombre; $('#ficha-d').textContent = p.descripcion || '';
     $('#ficha-hoy').textContent = sale ? 'hoy sale' : 'hoy no sale';
     ficha.classList.toggle('off', !sale);
-    $('#ficha-wa').textContent = sale ? '¿Hay hoy? Preguntá' : 'Avisame cuando vuelva';
+    $('#ficha-wa').textContent = sale ? '¿Hay hoy? Preguntá' : '¿Cuándo vuelve?';
     $('#ficha-wa').href = `https://wa.me/${WA}?text=` + encodeURIComponent(sale ? `¡Hola! ¿Hoy hay ${p.nombre.toLowerCase()}?` : `¡Hola! ¿Cuándo vuelve ${p.nombre.toLowerCase()}?`);
     ficha.hidden = false; ficha.style.animation = 'none'; void ficha.offsetWidth; ficha.style.animation = '';
   }
