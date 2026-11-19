@@ -330,8 +330,8 @@ html:not(.intro-fin).con-intro body{animation:introSeguro 0s 5s forwards}
 }
 
 /* ——— segunda vuelta del revisor ——— */
-.pasado .barra{background:var(--cal);box-shadow:0 8px 20px rgba(43,28,22,.12);padding-bottom:10px;align-items:center}
-.pasado .barra .menu-btn{margin-top:0}
+.pasado .barra,.bajo .barra{background:var(--cal);box-shadow:0 8px 20px rgba(43,28,22,.12);padding-bottom:10px;align-items:center}
+.pasado .barra .menu-btn,.bajo .barra .menu-btn{margin-top:0}
 html:not(.en-hero):not(.en-pie) .kit-demo-pill{opacity:0;pointer-events:none}
 .kit-demo-pill{transition:opacity .3s}
 @media (max-width:899px){
@@ -353,3 +353,12 @@ html:not(.en-hero):not(.en-pie) .kit-demo-pill{opacity:0;pointer-events:none}
   .ficha__desc{line-height:1.45;height:calc(2.9em + 2px);-webkit-line-clamp:2;margin-bottom:14px}
 }
 .ficha__precio{white-space:nowrap}
+
+@media (max-width:899px){
+  .tesel{padding:12px}
+  .tesel span{font-size:clamp(17px,4.8vw,22px);padding:4px 12px;max-width:100%;white-space:nowrap}
+  .ficha__nombre{margin-bottom:8px}
+  .ficha__foto img{animation:caeFoto .45s cubic-bezier(.2,.8,.25,1)}
+  .pizarra .kit-tabs{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:40px}
+}
+@keyframes caeFoto{from{opacity:0;transform:translateY(-14px) rotate(-2deg) scale(1.04)}}

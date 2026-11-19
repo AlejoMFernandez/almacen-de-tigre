@@ -130,6 +130,9 @@ function wow(productos) {
     grupos.push([g, c]);
   });
   const primera = !wowListo;
+  // en el celu la ficha muestra un plato de ejemplo desde el primer momento
+  const fotos0 = grupos.filter(([g]) => g.classList.contains('foto') && !g.classList.contains('off'));
+  if (celu() && fotos0[0] && !med.classList.contains('abierta')) { fotos0[0][0].classList.add('activa'); llenar(lista[fotos0[0][0].dataset.i], true); }
   wowListo = { firma: lista.map(p => p.id + (p.disponible === false)).join() };
   // firma: las piezas se juntan cuando el mosaico entra en pantalla
   if (primera && !reducido) {
@@ -174,6 +177,7 @@ function wow(productos) {
     $('#ficha-wa').textContent = sale ? '¿Hay hoy? Preguntá' : '¿Cuándo vuelve?';
     $('#ficha-wa').href = `https://wa.me/${WA}?text=` + encodeURIComponent(sale ? `¡Hola! ¿Hoy hay ${p.nombre.toLowerCase()}?` : `¡Hola! ¿Cuándo vuelve ${p.nombre.toLowerCase()}?`);
     ficha.hidden = false; ficha.style.animation = 'none'; void ficha.offsetWidth; ficha.style.animation = '';
+    const im = $('#ficha-img'); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = '';
   }
   wow.invitar = invitar;
 }
@@ -275,6 +279,7 @@ function firma() {
 let yAnt = 0;
 addEventListener('scroll', () => {
   const y = scrollY, b = $('.barra');
+  html.classList.toggle('bajo', y > 40);
   if (y > innerHeight * .8 && y > yAnt + 6) b.classList.add('oculta');
   else if (y < yAnt - 6 || y < innerHeight * .5) b.classList.remove('oculta');
   yAnt = y;
