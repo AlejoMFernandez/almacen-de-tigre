@@ -362,3 +362,4 @@ html:not(.en-hero):not(.en-pie) .kit-demo-pill{opacity:0;pointer-events:none}
   .pizarra .kit-tabs{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:40px}
 }
 @keyframes caeFoto{from{opacity:0;transform:translateY(-14px) rotate(-2deg) scale(1.04)}}
+@media (max-width:899px){.tesel span{white-space:normal;text-wrap:balance;line-height:1.7;padding:4px 12px 6px}.tesel{padding-bottom:16px}}
